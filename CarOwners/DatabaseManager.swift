@@ -70,7 +70,7 @@ class DatabaseManager: NSObject {
         
     }
     
-    func editDataForName(objectID: NSManagedObjectID, newValue: String, type: Type) {
+    func editDataById(objectID: NSManagedObjectID, newValue: String) {
         
         let model = self.context?.object(with: objectID)
 

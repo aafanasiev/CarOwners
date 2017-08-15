@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Sxa-UB-JOZ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainVC" customModule="CarOwners" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,69 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xbx-Ug-MD7">
+                                <rect key="frame" x="30" y="79" width="315" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qNy-dd-X9r"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Owners"/>
+                                    <segment title="Cars"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeState:" destination="BYZ-38-t0r" eventType="valueChanged" id="M1Z-UV-m7k"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RLU-qN-57E">
+                                <rect key="frame" x="0.0" y="129" width="375" height="538"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Xbx-Ug-MD7" secondAttribute="trailing" constant="30" id="6Db-xK-RIa"/>
+                            <constraint firstAttribute="trailing" secondItem="RLU-qN-57E" secondAttribute="trailing" id="8wf-mi-gZX"/>
+                            <constraint firstItem="RLU-qN-57E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="U28-RI-jmh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RLU-qN-57E" secondAttribute="bottom" id="bY3-bW-BCm"/>
+                            <constraint firstItem="Xbx-Ug-MD7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="cgv-Oz-jpi"/>
+                            <constraint firstItem="RLU-qN-57E" firstAttribute="top" secondItem="Xbx-Ug-MD7" secondAttribute="bottom" constant="20" id="g6z-y9-Og4"/>
+                            <constraint firstItem="Xbx-Ug-MD7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="tMp-4a-m1q"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="F0A-Ec-Dog">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="JAA-nh-cQC">
+                            <connections>
+                                <action selector="addData:" destination="BYZ-38-t0r" id="7d6-qd-lp8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dataTableView" destination="RLU-qN-57E" id="1Zm-hH-C8g"/>
+                        <outlet property="segmentSelector" destination="Xbx-Ug-MD7" id="3ke-qo-y2v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yO7-9F-kee">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sxa-UB-JOZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O19-HX-EeH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zre-vl-1GR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYt-We-gch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="177" y="139"/>
         </scene>
     </scenes>
 </document>
