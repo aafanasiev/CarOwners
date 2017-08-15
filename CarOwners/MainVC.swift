@@ -27,7 +27,6 @@ class MainVC: UIViewController {
         
         dataTableView.delegate = self
         dataTableView.dataSource = self
-    
     }
     
     @IBAction func changeState(_ sender: UISegmentedControl) {
@@ -38,8 +37,8 @@ class MainVC: UIViewController {
     
     @IBAction func addData(_ sender: UIBarButtonItem) {
         
-        let addAlert = UIAlertController(title: "Add new owner", message: "Please enter owner name", preferredStyle: .alert)
-        addAlert.addTextField {$0.text = "Enter name"}
+        let addAlert = UIAlertController(title: "Add new \(dataType) name", message: "Please enter \(dataType) name", preferredStyle: .alert)
+        addAlert.addTextField {$0.text = ""}
         let addAction = UIAlertAction(title: "OK", style: .default) { (_) in
             
             let name = addAlert.textFields![0].text
@@ -54,58 +53,17 @@ class MainVC: UIViewController {
         addAlert.addAction(addAction)
         addAlert.addAction(cancelAction)
         
-        self.present(addAlert, animated: true) { 
-//            self.getData(type: self.dataType)
-//            self.dataTableView.reloadData()
-        }
-        
+        self.present(addAlert, animated: true, completion: nil)
     }
     
     func getData(type: Type) {
-//        if segmentSelector.selectedSegmentIndex == 0{
-//            self.dataArray =  DatabaseManager.shared.getAllData(type: .Owner)
-//        }else{
-//            self.dataArray = DatabaseManager.shared.getAllData(type: .Car)
-//        }
-
         self.dataArray = DatabaseManager.shared.getAllData(type: type)
         self.dataTableView.reloadData()
     }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// MARK: - Table View Data Source and Delegate
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     
@@ -115,7 +73,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let editAlert = UIAlertController(title: "Edit your \(dataType) name", message: "Please edit data", preferredStyle: .alert)
+        let editAlert = UIAlertController(title: "Edit your \(dataType) name", message: "Please edit \(dataType) name", preferredStyle: .alert)
         if let name = dataArray[indexPath.row].value(forKey: "name") as? String {
             editAlert.addTextField {$0.text = name}
         }
@@ -124,8 +82,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             let name = editAlert.textFields![0].text
             _ = DatabaseManager.shared.editDataById(objectID: self.dataArray[indexPath.row].objectID, newValue: name!)
             
-            
-           // _ = DatabaseManager.shared.addData(name: name!, type: self.dataType)
             self.getData(type: self.dataType)
             self.dataTableView.reloadData()
         }
@@ -138,9 +94,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         
         self.present(editAlert, animated: true) {
         }
-
-        
-        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -150,7 +103,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             self.getData(type: self.dataType)
         }
     }
-    
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
  
@@ -160,11 +112,9 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
 
-        
         if let name = dataArray[indexPath.row].value(forKey: "name") as? String {
             cell?.textLabel?.text = name
         }
-        
         return cell!
     }
     

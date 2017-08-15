@@ -16,8 +16,8 @@ class DatabaseManager: NSObject {
     private var context: NSManagedObjectContext? = nil
     private var pojo: NSManagedObject? = nil
     
+    // Singleton of DatabaseManager
     private override init() { }
-    
     static let shared = DatabaseManager()
 
     
@@ -30,6 +30,7 @@ class DatabaseManager: NSObject {
         self.pojo = NSManagedObject(entity: entity!, insertInto: self.context!)
     }
     
+    // method to get type entity
     func getType(type: Type) -> String {
         switch type {
         case .Owner:
@@ -39,6 +40,7 @@ class DatabaseManager: NSObject {
         }
     }
     
+    // Add data to DB
     func addData(name: String, type: Type) {
         initDb(type: type)
         self.pojo?.setValue(name, forKey: "name")
@@ -51,6 +53,7 @@ class DatabaseManager: NSObject {
         }
     }
     
+    // Get all data from DB
     func getAllData(type: Type) -> [NSManagedObject]{
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: getType(type: type))
@@ -65,11 +68,8 @@ class DatabaseManager: NSObject {
         
         return model
     }
-    
-    func getDataForName() {
-        
-    }
-    
+   
+    // Edit data by ID
     func editDataById(objectID: NSManagedObjectID, newValue: String) {
         
         let model = self.context?.object(with: objectID)
@@ -82,6 +82,7 @@ class DatabaseManager: NSObject {
         }
     }
     
+    // Delete data by ID
     func deleteDataById(id: NSManagedObjectID) {
         
         self.context = appDelegate.persistentContainer.viewContext
@@ -93,6 +94,7 @@ class DatabaseManager: NSObject {
         }
     }
     
+    // Delete all data
     func deleteAllData(type: Type) {
         
         self.context = appDelegate.persistentContainer.viewContext
@@ -108,7 +110,7 @@ class DatabaseManager: NSObject {
     }
 }
 
-
+// Enum of type entity which use in DB
 enum Type {
     case Owner
     case Car
