@@ -22,6 +22,7 @@ class MainVC: UIViewController {
         self.getData(type: .Owner)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
