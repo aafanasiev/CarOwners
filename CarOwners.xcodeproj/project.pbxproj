@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B962E5951F442C1900F54E38 /* CarOwners.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B96DD1C01F430AF400391E0E /* CarOwners.xcdatamodeld */; };
 		B96DD1BA1F430AF400391E0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DD1B91F430AF400391E0E /* AppDelegate.swift */; };
 		B96DD1BC1F430AF400391E0E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DD1BB1F430AF400391E0E /* MainVC.swift */; };
 		B96DD1BF1F430AF400391E0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B96DD1BD1F430AF400391E0E /* Main.storyboard */; };
-		B96DD1C21F430AF400391E0E /* CarOwners.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B96DD1C01F430AF400391E0E /* CarOwners.xcdatamodeld */; };
 		B96DD1C41F430AF400391E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B96DD1C31F430AF400391E0E /* Assets.xcassets */; };
 		B96DD1C71F430AF400391E0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B96DD1C51F430AF400391E0E /* LaunchScreen.storyboard */; };
 		B96DD1CF1F430B2900391E0E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DD1CE1F430B2900391E0E /* DatabaseManager.swift */; };
@@ -145,8 +145,8 @@
 			files = (
 				B96DD1CF1F430B2900391E0E /* DatabaseManager.swift in Sources */,
 				B96DD1BC1F430AF400391E0E /* MainVC.swift in Sources */,
+				B962E5951F442C1900F54E38 /* CarOwners.xcdatamodeld in Sources */,
 				B96DD1BA1F430AF400391E0E /* AppDelegate.swift in Sources */,
-				B96DD1C21F430AF400391E0E /* CarOwners.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
