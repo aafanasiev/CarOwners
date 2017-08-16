@@ -66,9 +66,6 @@ class DatabaseManager: NSObject {
         return model
     }
     
-    func getDataForName() {
-        
-    }
     
     func editDataForName(objectID: NSManagedObjectID, newValue: String, type: Type) {
         
